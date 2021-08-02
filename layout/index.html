@@ -52,13 +52,14 @@
 
     <div class="img-avt"><p>Avatar upload </p></div>
       <button  method="post" class="btn btn-primary">Add</button>
-      <button type="reset" method="post" class="btn btn-primary">Reset</button>
+      <button type="reset" id="reset" method="post" class="btn btn-primary">Reset</button>
     </div>
   </form>
   <div class="container">
     <div class="result">
       <div class="infor">
         <label for="inputPassword6">Fullname:</label>
+        <span name="fullname1"></span>
         <label for="inputPassword6">Email:</label>
         <label for="inputPassword6">Phone:</label>
         <label for="inputPassword6">Birthday:</label>
@@ -72,10 +73,11 @@
     form: '#form-signup',
     errorselector: '.form-message',
     rules: [
-      Validator.isRequired('#fname',3),
+      Validator.isRequired('#fname',50),
       Validator.isEmail('#email'),
       Validator.isPhone('#phone',10),
       Validator.isBirthday('#birthday'),
+      // Validator.isBirthday1('#birthday'),
       Validator.isPassword('#password',8,30),
       Validator.isCfpassword('#cfpassword'),
     ]
