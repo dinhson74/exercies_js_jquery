@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/stylesheets/style.css">
+<!--  -->
+
+</head>
+<body>
+  <form  action="" id="form-signup" method="POST" class="form-validates"">
+    <div class="col-css">
+      <label for="fname">Fullname</label>
+      <input id="fname" name="fname" type="text">
+      <span class="form-message"></span>
+    </div>
+
+    <div class="col-css">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="text">
+      <span class="form-message"></span>
+    </div>
+
+    <div class="col-css">
+      <label for="phone">Phone</label>
+      <input id ="phone" name="phone" type="text">
+      <span class="form-message"></span>
+    </div>
+
+    <div class="col-css">
+      <label for="birthday">Birthday</label>
+      <input id="birthday" name="birthday" type="datetime">
+      <span  class="form-message"></span>
+    </div>
+
+    <div class="col-css">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password">
+      <span  class="form-message"></span>
+    </div>
+
+    <div class="col-css">
+      <label for="cfpassword">Confirm password</label>
+      <input id="cfpassword" name="cfpassword"  type="password">
+      <span  class="form-message"></span>
+    </div>
+
+    <div class="img-avt"><p>Avatar upload </p></div>
+      <button  method="post" class="btn btn-primary">Add</button>
+      <button type="reset" method="post" class="btn btn-primary">Reset</button>
+    </div>
+  </form>
+  <div class="container">
+    <div class="result">
+      <div class="infor">
+        <label for="inputPassword6">Fullname:</label>
+        <label for="inputPassword6">Email:</label>
+        <label for="inputPassword6">Phone:</label>
+        <label for="inputPassword6">Birthday:</label>
+      </div>
+      <div style="float: right;margin-right: 20px;" class="img-avt"></div>
+    </div>
+  </div>
+  <script src="../assets/javascripts/validator.js"></script>
+<script>
+  Validator({
+    form: '#form-signup',
+    errorselector: '.form-message',
+    rules: [
+      Validator.isRequired('#fname',3),
+      Validator.isEmail('#email'),
+      Validator.isPhone('#phone',10),
+      Validator.isBirthday('#birthday'),
+      Validator.isPassword('#password',8,30),
+      Validator.isCfpassword('#cfpassword'),
+    ]
+  });
+</script>
+</body>
+</html>
