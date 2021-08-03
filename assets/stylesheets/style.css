@@ -31,7 +31,7 @@
   -moz-border-radius:50%;
   -webkit-border-radius:50%;
   width:150px;
-  margin: 30px 0px 0px 250px;
+  margin: 30px 0px -85px 250px;
 }
  .img-avt p{
   margin-top: 60px ;
@@ -50,4 +50,21 @@
 .result .infor label {
   display: block;
   margin: 20px;
+}
+img, svg {
+  vertical-align: middle;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  /* background-color: #000; */
+}
+#chooson {
+  display: block;
+  align-content: center;
+  width: 10%;
+  margin-left: 275px;
+  margin: -36ppx 0px 0px 0px;
+  margin-bottom: 100px;
+  background:rgba(143, 140, 140, 0.2)
+
 }

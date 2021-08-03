@@ -9,8 +9,7 @@
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
   crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/stylesheets/style.css">
-<!--  -->
-
+  <link rel="stylesheet" href="../assets/javascripts/validator.js">
 </head>
 <body>
   <form  action="" id="form-signup" method="POST" class="form-validates"">
@@ -49,39 +48,30 @@
       <input id="cfpassword" name="cfpassword"  type="password">
       <span  class="form-message"></span>
     </div>
-
-    <div class="img-avt"><p>Avatar upload </p></div>
-      <button  method="post" class="btn btn-primary">Add</button>
+    <div class="img-avt">
+    <img id="myimage" height="150px">
+    </div>
+    <div class="col-css">
+      <label id="test1"  name="img" style="width: 66%;margin-bottom: 50px;opacity: 0.3;
+      color: #04083a;" for="" onclick="chooson.click()">Avatar upload</label>
+      <input type="file" id="chooson" name="chooson" style="display: none;" onchange="onFileSelected(event)">
+      <span  style="margin-left: 250px;"class="form-message"></span>
+    </div>
+      <button id="submit" method="post" name="submit" class="btn btn-primary">Add</button>
       <button type="reset" id="reset" method="post" class="btn btn-primary">Reset</button>
     </div>
   </form>
   <div class="container">
     <div class="result">
       <div class="infor">
-        <label for="inputPassword6">Fullname:</label>
-        <span name="fullname1"></span>
-        <label for="inputPassword6">Email:</label>
-        <label for="inputPassword6">Phone:</label>
-        <label for="inputPassword6">Birthday:</label>
+        <span id="span1"></span></br>
+        <span id="span2"></span></br>
+        <span id="span3"></span></br>
+        <span id="span4"></span></br>  
       </div>
-      <div style="float: right;margin-right: 20px;" class="img-avt"></div>
+      <img src="#" id="img5" alt="Your image">
     </div>
   </div>
   <script src="../assets/javascripts/validator.js"></script>
-<script>
-  Validator({
-    form: '#form-signup',
-    errorselector: '.form-message',
-    rules: [
-      Validator.isRequired('#fname',50),
-      Validator.isEmail('#email'),
-      Validator.isPhone('#phone',10),
-      Validator.isBirthday('#birthday'),
-      // Validator.isBirthday1('#birthday'),
-      Validator.isPassword('#password',8,30),
-      Validator.isCfpassword('#cfpassword'),
-    ]
-  });
-</script>
 </body>
 </html>
