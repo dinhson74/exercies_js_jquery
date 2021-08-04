@@ -1,18 +1,19 @@
 
-function Validator(options){
+function Validator(options) {
   let selectorRules = {};
   function validate(inputElement,rule){
     let errorMessage;
     let errorElemnt = inputElement.parentElement.querySelector(options.errorselector)
     let rules = selectorRules[rule.selector];
-    for(let i = 0; i < rules.length;i++){
+    for (let i = 0; i < rules.length;i++) {
       errorMessage = rules[i](inputElement.value);
       if (errorMessage) break;
     }
-    if(errorMessage){
+    if (errorMessage) {
       errorElemnt.innerText = errorMessage;
       inputElement.parentElement.classList.add('invalid');
-      } else {
+    } 
+    else {
       errorElemnt.innerText ='';
       inputElement.parentElement.classList.remove('invalid');
     }
@@ -21,41 +22,43 @@ function Validator(options){
   let formElement = document.querySelector(options.form);
   if (formElement) { 
     formElement.onsubmit = function(e){
-        e.preventDefault();
-        let isFormValue = true;
-        options.rules.forEach(function (rule){
+      e.preventDefault();
+      let isFormValue = true;
+      options.rules.forEach(function (rule) {
         let inputElement = formElement.querySelector(rule.selector);
         let isValid = validate(inputElement,rule);
-        if(!isValid){
+        if (!isValid) {
           isFormValue = false;
         }
       });
-      if(isFormValue){
-        if(typeof options.onsubmit === 'function'){
+      if (isFormValue) {
+        if (typeof options.onsubmit === 'function') {
           let enableInputs = formElement.querySelectorAll('[name]');
-          let formValue = Array.from(enableInputs).reduce(function(values,input){
+          let formValue = Array.from(enableInputs).reduce(function(values,input) {
             values[input.name] = input.value;
             return  values;
           }, {});
           document.getElementById('span1').innerText = formValue;
           options.onsubmit(formValue);
-        } else {
+        } 
+        else {
           formElement.submit();
         }
       } 
     }
-    options.rules.forEach(function (rule){
-      if(Array.isArray(selectorRules[rule.selector])){
+    options.rules.forEach(function (rule) {
+      if (Array.isArray(selectorRules[rule.selector])) {
         selectorRules[rule.selector].push(rule.test);
-      } else {
+      } 
+      else {
         selectorRules[rule.selector] = [rule.test];
       }
       let inputElement = formElement.querySelector(rule.selector);
-      if(inputElement){
+      if (inputElement) {
         inputElement.onblur = function() {
           validate(inputElement,rule);
         }
-        inputElement.oninput = function(){
+        inputElement.oninput = function() {
           let errorElemnt = inputElement.parentElement.querySelector('.form-message')
           errorElemnt.innerText ='';
           inputElement.parentElement.classList.remove('invalid');
@@ -64,31 +67,31 @@ function Validator(options){
     });
   }
 }
-function empty(value,messageEmpty){
+function empty(value,messageEmpty) {
   let valueTrim = value.trim();
-  if(valueTrim.length == 0){
+  if (valueTrim.length == 0) {
     return  messageEmpty;
   }
 }
-function regex(value,regex,messageRegex){
+function regex(value,regex,messageRegex) {
   let valueTrim = value.trim();
   return regex.test(value) ?  undefined :messageRegex;
 }
-function messageError(nameField){
+function messageError(nameField) {
   return `Vui lòng nhập ${nameField} hợp lệ`;
 }
 let message,messageEmpty ;
-Validator.isFullname = function(selector,nameField){
+Validator.isFullname = function(selector,nameField) {
   return {
     selector: selector,
-    test: function(value){
+    test: function(value) {
       const REGEX_FULLNAME = /^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$/;
       messageRegex = messageError(nameField);
       return regex(value,REGEX_FULLNAME,messageRegex) ;
     }
   };
 }
-Validator.isEmail = function(selector,nameField){
+Validator.isEmail = function(selector,nameField) {
   return {
     selector: selector,
     test: function(value){
@@ -98,7 +101,7 @@ Validator.isEmail = function(selector,nameField){
     }
   };
 }
-Validator.isPhone = function(selector,nameField){
+Validator.isPhone = function(selector,nameField) {
   return {
     selector: selector,
     test: function(value){
@@ -109,7 +112,7 @@ Validator.isPhone = function(selector,nameField){
   };
 }
 
-Validator.isBirthday = function(selector,nameField){
+Validator.isBirthday = function(selector,nameField) {
   return {
     selector: selector,
     test: function(value){
@@ -118,7 +121,7 @@ Validator.isBirthday = function(selector,nameField){
       let year1 = parseInt(parts[2], 10);
       let date = new Date();
       let year_now = date.getFullYear();
-      if(year1>year_now){
+      if(year1 > year_now){
         return `Vui lòng nhập năm sinh hợp lệ`;
       } 
       messageRegex = messageError(nameField);
@@ -127,7 +130,7 @@ Validator.isBirthday = function(selector,nameField){
   }
 }
 
-Validator.isPassword = function(selector,nameField){
+Validator.isPassword = function(selector,nameField) {
   return {
     selector: selector,
     test: function(value){
@@ -143,10 +146,10 @@ Validator.isPassword = function(selector,nameField){
     }
   };
 }
-Validator.isCfpassword = function(selector,getConfrimValue,message){
+Validator.isCfpassword = function(selector,getConfrimValue,message) {
   return {
     selector: selector,
-    test: function(value){
+    test: function(value) {
       return value === getConfrimValue() ? undefined : message;
     }
   };
@@ -169,25 +172,25 @@ Validator.empty = function(selector,nameField){
     }
   };
 } 
-Validator.maxLength = function(selector,max,nameField){
+Validator.maxLength = function(selector,max,nameField) {
   return {
     selector: selector,
     test: function(value){
       const messageMax = `Vui lòng nhập ${nameField} không quá ${max} ký tự`;
       let valueTrim = value.trim();
-      if(valueTrim.length > max){
+      if (valueTrim.length > max) {
         return  messageMax;
       }
     }
   };
 } 
-Validator.minLength = function(selector,min,nameField){
+Validator.minLength = function(selector,min,nameField) {
   return {
     selector: selector,
-    test: function(value){
+    test: function(value) {
       const messageMin = `Vui lòng nhập ${nameField} ít nhất ${min} ký tự`;
       let valueTrim = value.trim();
-      if(valueTrim.length < min){
+      if (valueTrim.length < min) {
         return  messageMin;
       }
     }
@@ -221,7 +224,7 @@ Validator({
     let splitStr = data['fname'].toLowerCase().split(' ');
       for (let i = 0; i < splitStr.length; i++) {
           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);   
-        }
+      }
     document.getElementById('span1').innerHTML = splitStr.join(' ');
     document.getElementById('span2').innerText = data['email'];
     document.getElementById('span3').innerText = data['phone'];
@@ -234,7 +237,7 @@ function onFileSelected(event) {
   selectedFile = event.target.files[0];
   readFile(selectedFile,"myimage");
 }
-function readFile(selectedFile,elementId){
+function readFile(selectedFile,elementId) {
   let reader = new FileReader();
   let imgtag = document.getElementById(elementId);
   imgtag.title = selectedFile.name;
@@ -243,7 +246,7 @@ function readFile(selectedFile,elementId){
   };
   reader.readAsDataURL(selectedFile);
 }
-const shiflt =16;
+const shiflt = 16;
 input = document.getElementById("phone");
 input.addEventListener("keyup", function(event) {
     if (event.keyCode === shiflt) {
