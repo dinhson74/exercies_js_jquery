@@ -251,7 +251,7 @@ function readFile(selectedFile,elementId){
   };
   reader.readAsDataURL(selectedFile);
 }
-var input;
+
 input = document.getElementById("phone");
 input.addEventListener("keyup", function(event) {
     if (event.keyCode === 16) {
