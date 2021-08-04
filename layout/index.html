@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="../assets/javascripts/validator.js">
 </head>
 <body>
-  <form  action="" id="form-signup" method="POST" class="form-validates"">
+  <form action="" id="form-signup" method="POST" class="form-validates"">
+
     <div class="col-css">
       <label for="fname">Fullname</label>
       <input id="fname" name="fname" type="text">
@@ -48,18 +49,20 @@
       <input id="cfpassword" name="cfpassword"  type="password">
       <span  class="form-message"></span>
     </div>
+
     <div class="img-avt">
-    <img id="myimage" height="150px">
+      <img id="myimage" height="150px">
     </div>
+
     <div class="col-css">
       <label id="test1"  name="img" style="width: 66%;margin-bottom: 50px;opacity: 0.3;
       color: #04083a;" for="" onclick="chooson.click()">Avatar upload</label>
       <input type="file" id="chooson" name="chooson" style="display: none;" onchange="onFileSelected(event)">
       <span  style="margin-left: 250px;"class="form-message"></span>
     </div>
+
       <button id="submit" method="post" name="submit" class="btn btn-primary">Add</button>
       <button type="reset" id="reset" method="post" class="btn btn-primary">Reset</button>
-    </div>
   </form>
   <div class="container">
     <div class="result">
