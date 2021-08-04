@@ -249,45 +249,45 @@ function readFile(selectedFile,elementId){
   };
   reader.readAsDataURL(selectedFile);
 }
-
+const shiflt =16;
 input = document.getElementById("phone");
 input.addEventListener("keyup", function(event) {
-    if (event.keyCode === 16) {
+    if (event.keyCode === shiflt) {
         event.preventDefault();
         document.getElementById("reset").click();
     }
 });
 input = document.getElementById("fname");
 input.addEventListener("keyup", function(event) {
-    if (event.keyCode === 16) {
+    if (event.keyCode === shiflt) {
         event.preventDefault();
         document.getElementById("reset").click();
     }
 });
 input = document.getElementById("email");
 input.addEventListener("keyup", function(event) {
-    if (event.keyCode === 16) {
+    if (event.keyCode === shiflt) {
         event.preventDefault();
         document.getElementById("reset").click();
     }
 });
 // input = document.getElementById("password");
 // input.addEventListener("keyup", function(event) {
-//     if (event.keyCode === 16) {
+//     if (event.keyCode === shiflt) {
 //         event.preventDefault();
 //         document.getElementById("reset").click();
 //     }
 // });
 // input = document.getElementById("cfpassword");
 // input.addEventListener("keyup", function(event) {
-//     if (event.keyCode === 16) {
+//     if (event.keyCode === shiflt) {
 //         event.preventDefault();
 //         document.getElementById("reset").click();
 //     }
 // });
 input = document.getElementById("birthday");
 input.addEventListener("keyup", function(event) {
-    if (event.keyCode === 16) {
+    if (event.keyCode === shiflt) {
         event.preventDefault();
         document.getElementById("reset").click();
     }
