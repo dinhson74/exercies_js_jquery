@@ -115,7 +115,7 @@ Validator.isPhone = function(selector,nameField){
     selector: selector,
     test: function(value){
       const REGEX_PHONE = /^0\d{9}$/;
-      messageRegex = `Vui lòng nhập ${nameField} hợp lệ`;
+      messageRegex = messageError(nameField);
       return regex(value,REGEX_PHONE,messageRegex);
     }
   };
@@ -133,7 +133,7 @@ Validator.isBirthday = function(selector,nameField){
       if(year1>year_now){
         return `Vui lòng nhập năm sinh hợp lệ`;
       } 
-      messageRegex = `Vui lòng nhập ${nameField} hợp lệ`;
+      messageRegex = messageError(nameField);
       return regex(value,REGEX_BIRTHDAY,messageRegex);
     }
   }
@@ -163,13 +163,13 @@ Validator.isCfpassword = function(selector,getConfrimValue,message){
     }
   };
 }
-Validator.isImage = function(selector){
+Validator.isImage = function(selector,nameField){
   return {
     selector: selector,
     test: function(value){
       const REGEX_IMAGE= /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i
       messageEmpty = "Vui lòng chọn avata";
-      messageRegex = "Vui lòng lấy đúng hình ảnh";
+      messageRegex = messageError(nameField);
       return empty(value,messageEmpty) || regex(value,REGEX_IMAGE,messageRegex);
     }
   };
@@ -204,7 +204,6 @@ Validator({
   form: '#form-signup',
   errorselector: '.form-message',
   rules: [
-    // fulname || isFullname is regex value
     Validator.empty('#fname','fullname'), 
     Validator.empty('#email','email'), 
     Validator.empty('#phone','phone'), 
@@ -223,7 +222,7 @@ Validator({
     Validator.isCfpassword('#cfpassword',function(){
       return document.querySelector('#form-signup #password').value;
     }, "Mật khẩu nhập lại không chính xác"),
-    Validator.isImage('#chooson'),
+    Validator.isImage('#chooson','hình ảnh'),
   ],
   onsubmit: function(data){
     let splitStr = data['fname'].toLowerCase().split(' ');
