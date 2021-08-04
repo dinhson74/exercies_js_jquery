@@ -70,18 +70,6 @@ function empty(value,messageEmpty){
     return  messageEmpty;
   }
 }
-function minLength(value,min,messageMin){
-  let valueTrim = value.trim();
-  if(valueTrim.length < min){
-    return  messageMin;
-  }
-}
-function maxLength(value,max,messageMax){
-  let valueTrim = value.trim();
-  if(valueTrim.length > max){
-    return  messageMax;
-  }
-}
 function regex(value,regex,messageRegex){
   let valueTrim = value.trim();
   return regex.test(value) ?  undefined :messageRegex;
@@ -185,8 +173,11 @@ Validator.maxLength = function(selector,max,nameField){
   return {
     selector: selector,
     test: function(value){
-      messageMax = `Vui lòng nhập ${nameField} không quá ${max} ký tự`;
-      return maxLength(value,max,messageMax);
+      const messageMax = `Vui lòng nhập ${nameField} không quá ${max} ký tự`;
+      let valueTrim = value.trim();
+      if(valueTrim.length > max){
+        return  messageMax;
+      }
     }
   };
 } 
@@ -194,8 +185,11 @@ Validator.minLength = function(selector,min,nameField){
   return {
     selector: selector,
     test: function(value){
-      messageMax = `Vui lòng nhập ${nameField} ít nhất ${min} ký tự`;
-      return minLength(value,min,messageMax);
+      const messageMin = `Vui lòng nhập ${nameField} ít nhất ${min} ký tự`;
+      let valueTrim = value.trim();
+      if(valueTrim.length < min){
+        return  messageMin;
+      }
     }
   };
 } 
