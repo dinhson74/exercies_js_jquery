@@ -96,7 +96,7 @@ Validator.isRequired = function(selector){
       messageRegex = "Vui lòng nhập fullname hợp lệ";
       let max = 50;
       messageMax = `Vui lòng không nhập quá ${max} ký tự`
-      return  empty(value,messageEmpty)|| maxLength(value,max,messageMax)|| regex(value,REGEX_FULLNAME,messageRegex) ;
+      return  empty(value,messageEmpty) || maxLength(value,max,messageMax) || regex(value,REGEX_FULLNAME,messageRegex) ;
     }
   };
 }
@@ -153,12 +153,12 @@ Validator.isPassword = function(selector,min,max){
        return "Vui lòng nhập ký tự đầu tiên là chữ cái"
       }
     }
-    let min =8,max =30;
+    let min = 8,max = 30;
     messageEmpty = "Vui lòng nhập mật khẩu";
     messageRegex = "Vui lòng nhập mật khẩu bảo mật có chứa ký tự đặc biệt, chữ hoa, chữ thường";
     messageMax = `Vui lòng nhập password không quá ${max} ký tự`;
     messageMin = `Vui lòng nhập ít nhất ${min} ký tự`;
-    return empty(value,messageEmpty) || minLength(value,min,messageMin)|| maxLength(value,max,messageMax)|| regex(value,REGEX_PASSWORD,messageRegex);
+    return empty(value,messageEmpty) || minLength(value,min,messageMin) || maxLength(value,max,messageMax) || regex(value,REGEX_PASSWORD,messageRegex);
     }
   };
 }
