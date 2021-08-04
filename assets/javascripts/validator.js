@@ -168,9 +168,8 @@ Validator.isImage = function(selector,nameField){
     selector: selector,
     test: function(value){
       const REGEX_IMAGE= /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i
-      messageEmpty = "Vui lòng chọn avata";
       messageRegex = messageError(nameField);
-      return empty(value,messageEmpty) || regex(value,REGEX_IMAGE,messageRegex);
+      return regex(value,REGEX_IMAGE,messageRegex);
     }
   };
 }
