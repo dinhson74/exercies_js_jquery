@@ -80,3 +80,6 @@ svg {
   margin-bottom: 100px;
   background: rgba(143, 140, 140, 0.2);
 }
+.invalid input {
+  border: 1px solid red;
+}
