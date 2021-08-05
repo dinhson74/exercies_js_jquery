@@ -205,24 +205,31 @@ Validator({
   form: '#form-signup',
   errorselector: '.form-message',
   rules: [
+    // fullname
     Validator.empty('#fname', 'fullname'),
-    Validator.empty('#email', 'email'),
-    Validator.empty('#phone', 'phone'),
-    Validator.empty('#birthday', 'birthday'),
-    Validator.empty('#password', 'password'),
-    Validator.empty('#cfpassword', 'confirm password'),
-    Validator.empty('#chooson', 'hình ảnh'),
     Validator.maxLength('#fname', 50, 'fullname'),
+    Validator.isFullname('#fname', 'fullname'),
+    // email
+    Validator.empty('#email', 'email'),
+    Validator.isEmail('#email', 'email'),
+    // phone
+    Validator.empty('#phone', 'phone'),
+    Validator.isPhone('#phone', 'phone'),
+    // birthdays
+    Validator.empty('#birthday', 'birthday'),
+    Validator.isBirthday('#birthday', 'birthday'),
+    // password
+    Validator.empty('#password', 'password'),
     Validator.maxLength('#password', 30, 'password'),
     Validator.minLength('#password', 8, 'password'),
-    Validator.isFullname('#fname', 'fullname'),
-    Validator.isEmail('#email', 'email'),
-    Validator.isPhone('#phone', 'phone'),
-    Validator.isBirthday('#birthday', 'birthday'),
     Validator.isPassword('#password', 'password'),
+    // confirm password
+    Validator.empty('#cfpassword', 'confirm password'),
     Validator.isCfpassword('#cfpassword', function () {
       return document.querySelector('#form-signup #password').value;
     }, "Mật khẩu nhập lại không chính xác"),
+    // image
+    Validator.empty('#chooson', 'hình ảnh'),
     Validator.isImage('#chooson', 'hình ảnh'),
   ],
   onsubmit: function (data) {
