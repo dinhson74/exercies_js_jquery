@@ -86,9 +86,9 @@ Validator.isFullname = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const REGEX_FULLNAME = /^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$/;
+      const regex_fulname = /^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$/;
       messageRegex = messageError(nameField);
-      return regex(value, REGEX_FULLNAME, messageRegex);
+      return regex(value, regex_fulname, messageRegex);
     }
   };
 }
@@ -97,9 +97,9 @@ Validator.isEmail = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const REGEX_EMAIL = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      const regex_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       messageRegex = messageError(nameField);
-      return regex(value, REGEX_EMAIL, messageRegex);
+      return regex(value, regex_email, messageRegex);
     }
   };
 }
@@ -108,9 +108,9 @@ Validator.isPhone = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const REGEX_PHONE = /^0\d{9}$/;
+      const regex_phone = /^0\d{9}$/;
       messageRegex = messageError(nameField);
-      return regex(value, REGEX_PHONE, messageRegex);
+      return regex(value, regex_phone, messageRegex);
     }
   };
 }
@@ -119,7 +119,7 @@ Validator.isBirthday = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const REGEX_BIRTHDAY = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+      const regex_birthday = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
       let parts = value.split("/");
       let year1 = parseInt(parts[2], 10);
       let date = new Date();
@@ -128,7 +128,7 @@ Validator.isBirthday = function (selector, nameField) {
         return `Vui lòng nhập năm sinh hợp lệ`;
       }
       messageRegex = messageError(nameField);
-      return regex(value, REGEX_BIRTHDAY, messageRegex);
+      return regex(value, regex_birthday, messageRegex);
     }
   }
 }
@@ -137,7 +137,7 @@ Validator.isPassword = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const REGEX_PASSWORD = /^([a-zA-Z])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
+      const regex_password = /^([a-zA-Z])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
       let parts = value.split("");
       for (let i = 0; i < parts.length; i++) {
         if (!isNaN(parts[0].charAt(0))) {
@@ -145,7 +145,7 @@ Validator.isPassword = function (selector, nameField) {
         }
       }
       messageRegex = `Vui lòng nhập ${nameField} bảo mật có chứa ký tự đặc biệt, chữ hoa, chữ thường`;
-      return regex(value, REGEX_PASSWORD, messageRegex);
+      return regex(value, regex_password, messageRegex);
     }
   };
 }
@@ -161,9 +161,9 @@ Validator.isImage = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const REGEX_IMAGE = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
+      const regex_image = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
       messageRegex = messageError(nameField);
-      return regex(value, REGEX_IMAGE, messageRegex);
+      return regex(value, regex_image, messageRegex);
     }
   };
 }
@@ -179,10 +179,10 @@ Validator.maxLength = function (selector, max, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const messageMax = `Vui lòng nhập ${nameField} không quá ${max} ký tự`;
+      const mesage_max = `Vui lòng nhập ${nameField} không quá ${max} ký tự`;
       let valueTrim = value.trim();
       if (valueTrim.length > max) {
-        return messageMax;
+        return mesage_max;
       }
     }
   };
@@ -192,10 +192,10 @@ Validator.minLength = function (selector, min, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const messageMin = `Vui lòng nhập ${nameField} ít nhất ${min} ký tự`;
+      const message_min = `Vui lòng nhập ${nameField} ít nhất ${min} ký tự`;
       let valueTrim = value.trim();
       if (valueTrim.length < min) {
-        return messageMin;
+        return message_min;
       }
     }
   };
@@ -254,11 +254,11 @@ function readFile(selectedFile, elementId) {
   reader.readAsDataURL(selectedFile);
 }
 
-const SHIFT_RESET = 16;
+const shiflt_reset = 16;
 
 input = document.getElementById("phone");
 input.addEventListener("keyup", function (event) {
-  if (event.keyCode === SHIFT_RESET) {
+  if (event.keyCode === shiflt_reset) {
     event.preventDefault();
     document.getElementById("reset").click();
   }
@@ -266,7 +266,7 @@ input.addEventListener("keyup", function (event) {
 
 input = document.getElementById("fname");
 input.addEventListener("keyup", function (event) {
-  if (event.keyCode === SHIFT_RESET) {
+  if (event.keyCode === shiflt_reset) {
     event.preventDefault();
     document.getElementById("reset").click();
   }
@@ -274,7 +274,7 @@ input.addEventListener("keyup", function (event) {
 
 input = document.getElementById("email");
 input.addEventListener("keyup", function (event) {
-  if (event.keyCode === SHIFT_RESET) {
+  if (event.keyCode === shiflt_reset) {
     event.preventDefault();
     document.getElementById("reset").click();
   }
@@ -282,7 +282,7 @@ input.addEventListener("keyup", function (event) {
 
 // input = document.getElementById("password");
 // input.addEventListener("keyup", function (event) {
-//   if (event.keyCode === SHIFT_RESET) {
+//   if (event.keyCode === shiflt_reset) {
 //     event.preventDefault();
 //     document.getElementById("reset").click();
 //   }
@@ -290,7 +290,7 @@ input.addEventListener("keyup", function (event) {
 
 // input = document.getElementById("cfpassword");
 // input.addEventListener("keyup", function (event) {
-//   if (event.keyCode === SHIFT_RESET) {
+//   if (event.keyCode === shiflt_reset) {
 //     event.preventDefault();
 //     document.getElementById("reset").click();
 //   }
@@ -298,7 +298,7 @@ input.addEventListener("keyup", function (event) {
 
 input = document.getElementById("birthday");
 input.addEventListener("keyup", function (event) {
-  if (event.keyCode === SHIFT_RESET) {
+  if (event.keyCode === shiflt_reset) {
     event.preventDefault();
     document.getElementById("reset").click();
   }
