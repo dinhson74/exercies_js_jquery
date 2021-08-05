@@ -3,7 +3,7 @@ function Validator(options) {
   let selectorRules = {};
   function validate(inputElement, rule) {
     let errorMessage;
-    let errorElemnt = inputElement.parentElement.querySelector(options.errorselector)
+    let errorElemnt = inputElement.parentElement.querySelector(options.errorSelector)
     let rules = selectorRules[rule.selector];
     for (let i = 0; i < rules.length; i++) {
       errorMessage = rules[i](inputElement.value);
@@ -203,7 +203,7 @@ Validator.minLength = function (selector, min, nameField) {
 
 Validator({
   form: '#form-signup',
-  errorselector: '.form-message',
+  errorSelector: '.form-message',
   rules: [
     // fullname
     Validator.empty('#fname', 'fullname'),
@@ -253,10 +253,10 @@ function onFileSelected(event) {
 
 function readFile(selectedFile, elementId) {
   let reader = new FileReader();
-  let imgtag = document.getElementById(elementId);
-  imgtag.title = selectedFile.name;
+  let imgTag = document.getElementById(elementId);
+  imgTag.title = selectedFile.name;
   reader.onload = function (event) {
-    imgtag.src = event.target.result;
+    imgTag.src = event.target.result;
   };
   reader.readAsDataURL(selectedFile);
 }
