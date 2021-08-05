@@ -12,8 +12,7 @@ function Validator(options) {
     if (errorMessage) {
       errorElemnt.innerText = errorMessage;
       inputElement.parentElement.classList.add('invalid');
-    }
-    else {
+    } else {
       errorElemnt.innerText = '';
       inputElement.parentElement.classList.remove('invalid');
     }
@@ -39,8 +38,7 @@ function Validator(options) {
             return values;
           }, {});
           options.onsubmit(formValue);
-        }
-        else {
+        } else {
           formElement.submit();
         }
       }
@@ -125,8 +123,8 @@ Validator.isBirthday = function (selector, nameField) {
       let parts = value.split("/");
       let year1 = parseInt(parts[2], 10);
       let date = new Date();
-      let year_now = date.getFullYear();
-      if (year1 > year_now) {
+      let yearNow = date.getFullYear();
+      if (year1 > yearNow) {
         return `Vui lòng nhập năm sinh hợp lệ`;
       }
       messageRegex = messageError(nameField);
