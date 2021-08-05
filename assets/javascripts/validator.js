@@ -38,7 +38,6 @@ function Validator(options) {
             values[input.name] = input.value;
             return values;
           }, {});
-          document.getElementById('span1').innerText = formValue;
           options.onsubmit(formValue);
         }
         else {
@@ -190,6 +189,7 @@ Validator.maxLength = function (selector, max, nameField) {
     }
   };
 }
+
 Validator.minLength = function (selector, min, nameField) {
   return {
     selector: selector,
@@ -232,11 +232,11 @@ Validator({
     for (let i = 0; i < splitStr.length; i++) {
       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
     }
-    document.getElementById('span1').innerHTML = splitStr.join(' ');
-    document.getElementById('span2').innerText = data['email'];
-    document.getElementById('span3').innerText = data['phone'];
-    document.getElementById('span4').innerText = data['birthday'];
-    readFile(selectedFile, "img5");
+    document.getElementById('result-fname').innerHTML = splitStr.join(' ');
+    document.getElementById('result-email').innerText = data['email'];
+    document.getElementById('result-phone').innerText = data['phone'];
+    document.getElementById('result-birthday').innerText = data['birthday'];
+    readFile(selectedFile, "avata");
   },
 });
 
@@ -282,21 +282,21 @@ input.addEventListener("keyup", function (event) {
   }
 });
 
-input = document.getElementById("password");
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === SHIFT_RESET) {
-    event.preventDefault();
-    document.getElementById("reset").click();
-  }
-});
+// input = document.getElementById("password");
+// input.addEventListener("keyup", function (event) {
+//   if (event.keyCode === SHIFT_RESET) {
+//     event.preventDefault();
+//     document.getElementById("reset").click();
+//   }
+// });
 
-input = document.getElementById("cfpassword");
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === SHIFT_RESET) {
-    event.preventDefault();
-    document.getElementById("reset").click();
-  }
-});
+// input = document.getElementById("cfpassword");
+// input.addEventListener("keyup", function (event) {
+//   if (event.keyCode === SHIFT_RESET) {
+//     event.preventDefault();
+//     document.getElementById("reset").click();
+//   }
+// });
 
 input = document.getElementById("birthday");
 input.addEventListener("keyup", function (event) {
