@@ -59,14 +59,21 @@ function Validator(options) {
           errorElemnt[5].innerText  = '';
           errorElemnt[6].innerText  = '';
         }
-        if(inputElement){
+        if(inputElement) {
           inputElement[0].parentElement.classList.remove('invalid');
+          inputElement[0].value = '';
           inputElement[1].parentElement.classList.remove('invalid');
+          inputElement[1].value = '';
           inputElement[2].parentElement.classList.remove('invalid');
+          inputElement[2].value = '';
           inputElement[3].parentElement.classList.remove('invalid');
+          inputElement[3].value = '';
           inputElement[4].parentElement.classList.remove('invalid');
+          inputElement[4].value = '';
           inputElement[5].parentElement.classList.remove('invalid');
+          inputElement[5].value = '';
           inputElement[6].parentElement.classList.remove('invalid');
+          inputElement[6].value = '';
         }
       }
     }
