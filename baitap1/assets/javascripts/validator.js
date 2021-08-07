@@ -51,7 +51,6 @@ function Validator(options) {
     // let inputElement = formElement.querySelector(rule.selector);
     if(buttonReset) {
       buttonReset.click = function(){
-        errorElemnt.innerText='';
         if (errorElemnt) {
           errorElemnt[0].innerText=''; 
           errorElemnt[1].innerText='';
@@ -167,7 +166,7 @@ Validator.isPassword = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const regex_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&\/])[A-Za-z\d@$#!%*?&\/]{8,30}$/;
+      const regex_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[[.,@$#!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
       let parts = value.split("");
       for (let i = 0; i < parts.length; i++) {
         if (!isNaN(parts[0].charAt(0))) {
