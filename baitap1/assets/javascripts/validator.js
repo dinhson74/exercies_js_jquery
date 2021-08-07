@@ -46,20 +46,18 @@ function Validator(options) {
     let buttonReset = formElement.querySelector('#reset-form');
     let errorElemnt = formElement.querySelectorAll('.form-message')
     let inputElement = formElement.parentElement.querySelectorAll('input')
-    console.log(inputElement[0]);
-
     // let inputElement = formElement.querySelector(rule.selector);
     if(buttonReset) {
       buttonReset.click = function(){
         errorElemnt.innerText='';
         if (errorElemnt) {
-          errorElemnt[0].innerText=''; 
-          errorElemnt[1].innerText='';
-          errorElemnt[2].innerText='';
-          errorElemnt[3].innerText='';
-          errorElemnt[4].innerText='';
-          errorElemnt[5].innerText='';
-          errorElemnt[6].innerText='';
+          errorElemnt[0].innerText  = ''; 
+          errorElemnt[1].innerText  = '';
+          errorElemnt[2].innerText  = '';
+          errorElemnt[3].innerText  = '';
+          errorElemnt[4].innerText  = '';
+          errorElemnt[5].innerText  = '';
+          errorElemnt[6].innerText  = '';
         }
         if(inputElement){
           inputElement[0].parentElement.classList.remove('invalid');
@@ -166,7 +164,8 @@ Validator.isPassword = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const regex_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&+~|{}:;<>/])[A-Za-z\d$@$!%*?&+~|{}:;<>/]{8,30}/;
+      // ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&+~|{}:;<>/])[A-Za-z\d$@$!%*?&+~|{}:;<>/]{8,15} 
+      const regex_password = /^(?=.*\d)(?=.*[$@$!%*?&+~|{}:;<>/])[A-Za-z\d$@$!%*?&+~|{}:;<>/]{8,30]$/;
       let parts = value.split("");
       for (let i = 0; i < parts.length; i++) {
         if (!isNaN(parts[0].charAt(0))) {
