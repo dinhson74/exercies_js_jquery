@@ -262,49 +262,17 @@ function readFile(selectedFile, elementId) {
 }
 
 const shiflt_reset = 16;
-
-input = document.getElementById("phone");
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === shiflt_reset) {
+const enter_submit = 13;
+reset_form = document.getElementById("form-signup");
+reset_form=document.addEventListener('keydown', function (event) {
+  if (event.keyCode === enter_submit) {
     event.preventDefault();
-    document.getElementById("reset").click();
+    document.getElementById("submit").click();
   }
 });
 
-input = document.getElementById("fname");
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === shiflt_reset) {
-    event.preventDefault();
-    document.getElementById("reset").click();
-  }
-});
-
-input = document.getElementById("email");
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === shiflt_reset) {
-    event.preventDefault();
-    document.getElementById("reset").click();
-  }
-});
-
-// input = document.getElementById("password");
-// input.addEventListener("keyup", function (event) {
-//   if (event.keyCode === shiflt_reset) {
-//     event.preventDefault();
-//     document.getElementById("reset").click();
-//   }
-// });
-
-// input = document.getElementById("cfpassword");
-// input.addEventListener("keyup", function (event) {
-//   if (event.keyCode === shiflt_reset) {
-//     event.preventDefault();
-//     document.getElementById("reset").click();
-//   }
-// });
-
-input = document.getElementById("birthday");
-input.addEventListener("keyup", function (event) {
+reset_form = document.getElementById("form-signup");
+reset_form=document.addEventListener('keydown', function (event) {
   if (event.keyCode === shiflt_reset) {
     event.preventDefault();
     document.getElementById("reset").click();
