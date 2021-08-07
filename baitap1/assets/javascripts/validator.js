@@ -43,6 +43,36 @@ function Validator(options) {
         }
       }
     }
+    let buttonReset = formElement.querySelector('#reset-form');
+    let errorElemnt = formElement.querySelectorAll('.form-message')
+    let inputElement = formElement.parentElement.querySelectorAll('input')
+    console.log(inputElement[0]);
+
+    // let inputElement = formElement.querySelector(rule.selector);
+    if(buttonReset) {
+      buttonReset.click = function(){
+        errorElemnt.innerText='';
+        if (errorElemnt) {
+          errorElemnt[0].innerText=''; 
+          errorElemnt[1].innerText='';
+          errorElemnt[2].innerText='';
+          errorElemnt[3].innerText='';
+          errorElemnt[4].innerText='';
+          errorElemnt[5].innerText='';
+          errorElemnt[6].innerText='';
+        }
+        if(inputElement){
+          console.log(inputElement);
+          inputElement[0].parentElement.classList.remove('invalid');
+          inputElement[1].parentElement.classList.remove('invalid');
+          inputElement[2].parentElement.classList.remove('invalid');
+          inputElement[3].parentElement.classList.remove('invalid');
+          inputElement[4].parentElement.classList.remove('invalid');
+          inputElement[5].parentElement.classList.remove('invalid');
+          inputElement[6].parentElement.classList.remove('invalid');
+        }
+      }
+    }
     options.rules.forEach(function (rule) {
       if (Array.isArray(selectorRules[rule.selector])) {
         selectorRules[rule.selector].push(rule.test);
@@ -275,6 +305,6 @@ reset_form = document.getElementById("form-signup");
 reset_form=document.addEventListener('keydown', function (event) {
   if (event.keyCode === shiflt_reset) {
     event.preventDefault();
-    document.getElementById("reset").click();
+    document.getElementById("reset-form").click();
   }
 });
