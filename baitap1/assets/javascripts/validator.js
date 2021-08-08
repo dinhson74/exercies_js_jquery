@@ -74,6 +74,11 @@ function Validator(options) {
           img.removeAttribute('src')
           img.title = '';
         }
+        spanFullname.innerText ='';
+        spanEmail.innerText ='';
+        spanPhone.innerText ='';
+        spanBirthday.innerText ='';
+        img2.src ='';
       }
     }
     options.rules.forEach(function (rule) {
@@ -142,7 +147,7 @@ Validator.isPhone = function (selector, nameField) {
     selector: selector,
     test: function (value) {
       const regex_phone = /^0\d{9}$/;
-      messageRegex = messageError(nameField);
+      messageRegex = messageError(nameField) + " (Example: 0528693637)";
       return regex(value, regex_phone, messageRegex);
     }
   };
@@ -293,11 +298,17 @@ function readFile(selectedFile, elementId) {
   };
   reader.readAsDataURL(selectedFile);
 }
+
+let formElement = document.querySelector('#form-signup');
+let img = formElement.querySelector('#myimage')
+let img2 = document.querySelector('#avata')
+let errorElemnt = formElement.querySelectorAll('.form-message')
+let inputElement = formElement.parentElement.querySelectorAll('input');
+let spanFullname = document.querySelector('#result-fname');
+let spanEmail = document.querySelector('#result-email');
+let spanPhone = document.querySelector('#result-phone');
+let spanBirthday = document.querySelector('#result-birthday');
 function resetForm() {
-  let formElement = document.querySelector('#form-signup');
-  let img = formElement.querySelector('#myimage')
-  let errorElemnt = formElement.querySelectorAll('.form-message')
-  let inputElement = formElement.parentElement.querySelectorAll('input')
   errorElemnt.innerText='';
   if (errorElemnt) {
     errorElemnt[0].innerText  = ''; 
@@ -324,6 +335,11 @@ function resetForm() {
     img.removeAttribute('src')
     img.title = '';
   }
+  spanFullname.innerText ='';
+  spanEmail.innerText ='';
+  spanPhone.innerText ='';
+  spanBirthday.innerText ='';
+  img2.src ='';
 }
 const shiflt_submit = 16;
 const delete_reset = 46;
@@ -342,3 +358,13 @@ reset_form=document.addEventListener('keydown', function (event) {
     document.getElementById("reset-form").click();
   }
 });
+
+let input = document.getElementById('fname');
+input.onkeyup = function(){
+  let inputFullname = document.getElementById('fname');
+  let splitStr = inputFullname.value.split(' ');
+  for (let i = 0; i < splitStr.length; i++) {
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  this.value = splitStr.join(' ');
+}
