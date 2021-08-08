@@ -167,6 +167,9 @@ Validator.isBirthdayDate = function (selector, nameField) {
       let monthNow = date.getMonth() + 1;
       let yearNow = date.getFullYear();
       console.log(month);
+      if(yearInput < 1900) {
+        return "Chúng tôi chỉ nhận người có năm sinh từ 1900"
+      }
       if (yearInput > yearNow) {
         return `Vui lòng nhập năm sinh hợp lệ`;
         
