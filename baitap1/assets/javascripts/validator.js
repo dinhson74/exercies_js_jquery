@@ -1,4 +1,3 @@
-
 function Validator(options) {
   let selectorRules = {};
   function validate(inputElement, rule) {
@@ -44,6 +43,7 @@ function Validator(options) {
       }
     }
     let buttonReset = formElement.querySelector('#reset-form');
+    let img = formElement.querySelector('#myimage')
     let errorElemnt = formElement.querySelectorAll('.form-message')
     let inputElement = formElement.parentElement.querySelectorAll('input')
     if(buttonReset) {
@@ -71,8 +71,8 @@ function Validator(options) {
           inputElement[4].value = '';
           inputElement[5].parentElement.classList.remove('invalid');
           inputElement[5].value = '';
-          inputElement[6].parentElement.classList.remove('invalid');
-          inputElement[6].value = '';
+          img.removeAttribute('src')
+          img.title = '';
         }
       }
     }
@@ -119,7 +119,7 @@ Validator.isFullname = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const regex_fulname = /^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$/;
+      const regex_fulname = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/;
       messageRegex = messageError(nameField);
       return regex(value, regex_fulname, messageRegex);
     }
@@ -293,12 +293,43 @@ function readFile(selectedFile, elementId) {
   };
   reader.readAsDataURL(selectedFile);
 }
-
-const shiflt_reset = 16;
-const enter_submit = 13;
+function resetForm() {
+  let formElement = document.querySelector('#form-signup');
+  let img = formElement.querySelector('#myimage')
+  let errorElemnt = formElement.querySelectorAll('.form-message')
+  let inputElement = formElement.parentElement.querySelectorAll('input')
+  errorElemnt.innerText='';
+  if (errorElemnt) {
+    errorElemnt[0].innerText  = ''; 
+    errorElemnt[1].innerText  = '';
+    errorElemnt[2].innerText  = '';
+    errorElemnt[3].innerText  = '';
+    errorElemnt[4].innerText  = '';
+    errorElemnt[5].innerText  = '';
+    errorElemnt[6].innerText  = '';
+  }
+  if(inputElement) {
+    inputElement[0].parentElement.classList.remove('invalid');
+    inputElement[0].value = '';
+    inputElement[1].parentElement.classList.remove('invalid');
+    inputElement[1].value = '';
+    inputElement[2].parentElement.classList.remove('invalid');
+    inputElement[2].value = '';
+    inputElement[3].parentElement.classList.remove('invalid');
+    inputElement[3].value = '';
+    inputElement[4].parentElement.classList.remove('invalid');
+    inputElement[4].value = '';
+    inputElement[5].parentElement.classList.remove('invalid');
+    inputElement[5].value = '';
+    img.removeAttribute('src')
+    img.title = '';
+  }
+}
+const shiflt_submit = 16;
+const delete_reset = 46;
 reset_form = document.getElementById("form-signup");
 reset_form=document.addEventListener('keydown', function (event) {
-  if (event.keyCode === enter_submit) {
+  if (event.keyCode === shiflt_submit) {
     event.preventDefault();
     document.getElementById("submit").click();
   }
@@ -306,7 +337,7 @@ reset_form=document.addEventListener('keydown', function (event) {
 
 reset_form = document.getElementById("form-signup");
 reset_form=document.addEventListener('keydown', function (event) {
-  if (event.keyCode === shiflt_reset) {
+  if (event.keyCode === delete_reset) {
     event.preventDefault();
     document.getElementById("reset-form").click();
   }

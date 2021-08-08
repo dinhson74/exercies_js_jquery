@@ -55,16 +55,16 @@
     </div>
 
     <div class="col-css">
-      <label id="test1"  name="img" style="width: 66%;margin-bottom: 50px;opacity: 0.3;
+      <label id="test1"  name="img" style="width: auto;margin-left: 275px;;margin-bottom: 50px;opacity: 0.3;
       color: #04083a;" for="" onclick="chooson.click()">Avatar upload</label>
       <input type="file" id="chooson" name="chooson" style="display: none;" onchange="onFileSelected(event)">
       <span  style="margin-left: 250px;"class="form-message"></span>
     </div>
 
       <button id="submit" method="post" name="submit" class="btn btn-primary">Add</button>
-      <button type="reset" id="reset-form" method="post" class="btn btn-primary" onchange="resetForm(event)">Reset</button>
+      <button type="reset" id="reset-form" method="post" onclick="resetForm()" class="btn btn-primary">Reset</button>
   </form>
-  <div class="container">
+    <div class="container">
     <div class="result">
       <div class="infor">
         <span id="result-fname"></span></br>
