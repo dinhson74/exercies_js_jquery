@@ -147,25 +147,43 @@ Validator.isPhone = function (selector, nameField) {
     selector: selector,
     test: function (value) {
       const regex_phone = /^0\d{9}$/;
-      messageRegex = messageError(nameField) + " (Example: 0528693637)";
+      messageRegex = messageError(nameField) + " (Ví dụ: 0528693637)";
       return regex(value, regex_phone, messageRegex);
     }
   };
 }
-
+Validator.isBirthdayDate = function (selector, nameField) {
+  return {
+    selector: selector,
+    test: function (value) {
+      let valueStr = value.toString();
+      console.log(valueStr);
+      let parts = value.split("/");
+      let yearInput = parseInt(parts[2], 10);
+      let month = parseInt(parts[1], 10);
+      let day = parseInt(parts[0], 10);
+      let date = new Date();
+      let dayNow = date.getDate();
+      let monthNow = date.getMonth() + 1;
+      let yearNow = date.getFullYear();
+      console.log(month);
+      if (yearInput > yearNow) {
+        return `Vui lòng nhập năm sinh hợp lệ`;
+        
+      }
+      if((yearInput < yearNow || month <= monthNow) == false){
+        return "Vui lòng nhập tháng sinh hợp lệ"
+      }
+      if((yearInput < yearNow || month <= monthNow && day <= dayNow) == false) {
+        return "Vui lòng nhập ngày xinh hợp lệ";
+      }
+    }}}
 Validator.isBirthday = function (selector, nameField) {
   return {
     selector: selector,
     test: function (value) {
-      const regex_birthday = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
-      let parts = value.split("/");
-      let year1 = parseInt(parts[2], 10);
-      let date = new Date();
-      let yearNow = date.getFullYear();
-      if (year1 > yearNow) {
-        return `Vui lòng nhập năm sinh hợp lệ`;
-      }
-      messageRegex = messageError(nameField);
+      const regex_birthday = /^(0?[1-9]|[12][0-9]|3[01])[/](0?[1-9]|1[012])[/]\d{4}$/;
+      messageRegex = messageError(nameField) + " ( ví dụ: 03/01/1998)";
       return regex(value, regex_birthday, messageRegex);
     }
   }
@@ -252,10 +270,12 @@ Validator({
     Validator.isEmail('#email', 'email'),
     // phone
     Validator.empty('#phone', 'phone'),
+    Validator.maxLength('#phone', 10, 'phone'),
     Validator.isPhone('#phone', 'phone'),
     // birthdays
     Validator.empty('#birthday', 'birthday'),
     Validator.isBirthday('#birthday', 'birthday'),
+    Validator.isBirthdayDate('#birthday'),
     // password
     Validator.empty('#password', 'password'),
     Validator.maxLength('#password', 30, 'password'),
