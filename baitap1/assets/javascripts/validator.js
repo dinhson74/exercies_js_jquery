@@ -171,11 +171,11 @@ Validator.isBirthdayDate = function (selector, nameField) {
         return `Vui lòng nhập năm sinh hợp lệ`;
         
       }
-      if((yearInput < yearNow || month <= monthNow) == false){
+      if((yearInput < yearNow || month <= monthNow) == false) {
         return "Vui lòng nhập tháng sinh hợp lệ"
       }
-      if((yearInput < yearNow || month <= monthNow && day <= dayNow) == false) {
-        return "Vui lòng nhập ngày xinh hợp lệ";
+      if((yearInput < yearNow || month < monthNow || day < dayNow) == false) {
+        return "Vui lòng nhập ngày sinh hợp lệ";
       }
     }}}
 Validator.isBirthday = function (selector, nameField) {
