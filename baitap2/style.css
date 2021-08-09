@@ -1,0 +1,16 @@
+.content {
+  margin: 100px 400px;
+}
+
+.items-province {
+  float: left;
+  margin-right: 50px;
+}
+
+.items-province select {
+  width: 100px;
+}
+
+.list-province select {
+  width: 200px;
+}
